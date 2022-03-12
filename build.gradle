@@ -56,15 +56,16 @@ task buildPluginArtifacts(type: GradleBuild) {
 
     copy {
         from layout.projectDirectory.dir("src/main/java/net/unicon/iam/shibboleth/storage/hazelcast/plugin/plugin.properties")
-        into layout.projectDirectory.dir("src/dist/bootstrap")
+        from layout.projectDirectory.dir("src/main/java/net/unicon/iam/shibboleth/storage/hazelcast/plugin/keys.txt")
+        into layout.projectDirectory.dir("src/dist/${project.name}-${project.version}/bootstrap")
     }
     copy {
         from layout.buildDirectory.dir("libs/${project.name}-${project.version}.jar")
-        into layout.projectDirectory.dir("src/dist/webapp/WEB-INF/lib")
+        into layout.projectDirectory.dir("src/dist/${project.name}-${project.version}/webapp/WEB-INF/lib")
     }
     copy {
         from { project.configurations.runtimeClasspath }
-        into ('src/dist/webapp/WEB-INF/lib')
+        into ("src/dist/${project.name}-${project.version}/webapp/WEB-INF/lib")
     }
     finalizedBy distTar {
         archivesBaseName = "${project.name}"
@@ -73,13 +74,11 @@ task buildPluginArtifacts(type: GradleBuild) {
 
         from layout.projectDirectory.dir("src/dist/")
         exclude "**/.gitkeep"
-        exclude "/${project.name}-${project.version}"
         finalizedBy distZip {
             archivesBaseName = "${project.name}"
 
             from layout.projectDirectory.dir("src/dist/")
             exclude "**/.gitkeep"
-            exclude "/${project.name}-${project.version}"
         }
     }
 }
