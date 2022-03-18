@@ -15,8 +15,6 @@ repositories {
 dependencies {
     compileOnly "net.shibboleth.idp:idp-admin-api:${project.'shibboleth.version'}"
     compileOnly "net.shibboleth.idp:idp-admin-impl:${project.'shibboleth.version'}"
-    compileOnly "org.opensaml:opensaml-storage-api:${project.'opensaml.version'}"
-    compileOnly "ch.qos.logback:logback-core:${project.'logback.version'}"
 
     implementation "com.hazelcast:hazelcast-all:${project.'hazelcast.version'}"
 
@@ -33,10 +31,7 @@ processResources {
 }
 
 clean {
-    delete (layout.projectDirectory.dir("src/dist/bootstrap/plugin.properties"))
-    delete fileTree(layout.projectDirectory.dir("src/dist/webapp/WEB-INF/lib")) {
-        include "**/*.jar"
-    }
+    delete (layout.projectDirectory.dir("src/dist/${project.name}-${project.version}"))
 }
 
 jar {
