@@ -16,7 +16,7 @@ dependencies {
     compileOnly "net.shibboleth.idp:idp-admin-api:${project.'shibboleth.version'}"
     compileOnly "net.shibboleth.idp:idp-admin-impl:${project.'shibboleth.version'}"
 
-    implementation "com.hazelcast:hazelcast-all:${project.'hazelcast.version'}"
+    implementation "com.hazelcast:hazelcast:${project.'hazelcast.version'}"
 
     testImplementation "net.shibboleth.idp:idp-authn-api:${project.'shibboleth.version'}"
     testImplementation "org.opensaml:opensaml-storage-api:${project.'opensaml.version'}:tests@jar"

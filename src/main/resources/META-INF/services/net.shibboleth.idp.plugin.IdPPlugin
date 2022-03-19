@@ -1,1 +1,1 @@
-net.unicon.iam.shibboleth.storage.hazelcast
+net.unicon.iam.shibboleth.storage.hazelcast.plugin.HazelcastStorageServicePlugin
